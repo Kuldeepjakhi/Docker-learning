@@ -47,7 +47,7 @@ CMD ["run"]
 `VOLUME` - It defines which directory in an image should be treated as a volume. The volume will be given a random name which can be found using docker inspect command.  
 `WORKDIR` - Defines the working directory for subsequent instructions in the Dockerfile(Important point to remember that it doesn't create a new intermediate layer in Image)  
  
-### DOCKER COMMAND CHEATSHEET
+#                                    DOCKER COMMAND CHEATSHEET
 
 ### DOCKER LOGIN 
 ```
@@ -150,9 +150,9 @@ docker system df -v (tracking and controlling volume consumption)
 
 
 ### REUSE VOLUME
-# Create the first container
+* Create the first container
 `$ docker run -d --name db -v app_data:/data database-image:latest`
-# Create the second container
+* Create the second container
 `docker run -d --name backup --volumes-from db backup-image:latest`
 
 ### Bind mounts
@@ -176,7 +176,7 @@ docker run -d \
 docker network create mongo-network
 docker network ls
 ```
-# 1- Mongo DB
+1- Mongo DB
 ```
 docker run -d --network mongo-network --name mongo \
    -p 27017:27017 \
@@ -184,7 +184,7 @@ docker run -d --network mongo-network --name mongo \
 	-e MONGO_INITDB_ROOT_PASSWORD=“admin”\
 	mongo
 ```
-# 2- Mongo Express
+2- Mongo Express
 ```
 docker run -d -it --rm \
     --network mongo-network \
@@ -196,7 +196,7 @@ docker run -d -it --rm \
     -e ME_CONFIG_MONGODB_ADMINPASSWORD=“admin” \
     mongo-express
 ```
-# Mongo Command
+### Mongo Command
 ```
 >  mongosh -u admin -p
 > show dbs
